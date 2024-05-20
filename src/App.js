@@ -33,6 +33,8 @@ function App() {
           <Switch>
             <Route exact path= "/" component={Search} />
             <Route exact path= "/about" component={About} />
+            {/* Add this line to specify the routing */}
+            {/* <Route exact path="/user/:id" component={User} /> */}
             <Route exact path= "/*" component={NotFound} />
           </Switch>
         </div>
