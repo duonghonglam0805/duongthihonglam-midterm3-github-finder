@@ -5,7 +5,7 @@ const Users = (props) => {
   return (
     <div style={userStyle}>
       {users.map((user) => (
-        <UserItem key={user.id} user={user} />
+        <UserItem key={user.id} user={user} /> 
       ))}
     </div>
   );
