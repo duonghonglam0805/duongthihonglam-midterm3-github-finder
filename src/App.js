@@ -2,8 +2,10 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import "./App.css";
+import About from "./components/About";
 import Navbar from "./components/layout/NavBar";
 import Search from "./components/users/Search";
+import NotFound from "./components/NotFound";
 function App() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
@@ -30,6 +32,8 @@ function App() {
           <h1>GitHub Users Data</h1>
           <Switch>
             <Route exact path= "/" component={Search} />
+            <Route exact path= "/about" component={About} />
+            <Route exact path= "/*" component={NotFound} />
           </Switch>
         </div>
       </Router>
