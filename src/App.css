@@ -377,7 +377,19 @@ table th {
 .navbar .welcome span {
   margin-right: 0.6rem;
 }
+.grid-repos {
+  display: grid;
+  row-gap: 50px;
+  column-gap: 20px;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
 
+.grid-item {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  text-align: start;
+}
 /* Mobile Styles */
 @media (max-width: 700px) {
   .hide-sm {

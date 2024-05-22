@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
-// import Repos
+import Repos from "../repos/Repos";
 const User = () => {
   const { id } = useParams();
   const [user, setUser] = useState({});
@@ -26,7 +26,6 @@ const User = () => {
       );
       const data = response.data;
       setRepos(data);
-      console.log(repos);
     } catch (error) {
       console.error("Error fetching data:", error.message);
     }
@@ -35,7 +34,7 @@ const User = () => {
   useEffect(() => {
     getUser(id); // call async getUser function
     getUserRepos(id);
-  }, []);
+  }, [id]);
 
   const {
     name,
@@ -52,6 +51,7 @@ const User = () => {
     public_gists,
     hireable,
   } = user;
+  // console.log("user:",repos)
   return (
     <Fragment>
       <Link to="/" className="btn btn-light">
@@ -125,7 +125,9 @@ const User = () => {
           <div className="badge badge-light">Repository: {public_repos}</div>
           <div className="badge badge-dark">Gist: {public_gists}</div>
       </div>
-      {/* <Repos repos = {repos} /> */}
+      <div className="grid-repos">
+          <Repos repos = {repos} />      
+      </div>
     </Fragment>
   );
 };
