@@ -22,10 +22,11 @@ const User = () => {
   const getUserRepos = async (username) => {
     try {
       const response = await axios.get(
-        `https://api.github.com/users/:${username}/repos`
+        `https://api.github.com/users/${username}/repos`
       );
       const data = response.data;
       setRepos(data);
+      console.log(repos);
     } catch (error) {
       console.error("Error fetching data:", error.message);
     }
