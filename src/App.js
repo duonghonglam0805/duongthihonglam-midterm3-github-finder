@@ -7,24 +7,23 @@ import Navbar from "./components/layout/NavBar";
 import User from "./components/users/User";
 import Search from "./components/users/Search";
 import NotFound from "./components/NotFound";
+import { fetchDataApi } from "./data/api";
 function App() {
   const [users, setUsers] = useState([]);
-  useEffect(() => {
     const fetchData = async () => {
       try {
-        // Use the 'axios' library to make a GET request to the GitHub API endpoint
-        const response = await axios.get("https://api.github.com/users");
-        setUsers(response.data); // dữ liệu trả về từ API được cho vào setUsers và nó sẽ được cập nhật vào users
-        // Log the fetched data to the console
-        console.log("GitHub Users:", response.data);
+        const users = await fetchDataApi();
+        setUsers(users);
+        console.log("GitHub Users:", users);
       } catch (error) {
-        // Log an error message if there's an issue fetching data
         console.error("Error fetching data:", error);
       }
     };
-    // Call the 'fetchData' function when the component mounts
-    fetchData();
-  }, []); // The empty dependency array ensures that 'useEffect' runs only once when the component mounts
+    
+useEffect(() => {
+  fetchData()
+},[]);
+
   return (
     <div className="App">
       <Router>
@@ -43,4 +42,5 @@ function App() {
     </div>
   );
 }
+
 export default App;

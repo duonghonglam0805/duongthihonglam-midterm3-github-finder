@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import Repos from "../repos/Repos";
-import { getUserApi } from "../../data/api";
+import { getUserApi, getUserReposApi } from "../../data/api";
 const User = () => {
   const { id } = useParams();
   const [user, setUser] = useState({});
@@ -17,18 +17,14 @@ const User = () => {
     }
   };
 
-  const getUserRepos = async (username) => {
-    try {
-      const response = await axios.get(
-        `https://api.github.com/users/${username}/repos`
-      );
-      const data = response.data;
-      setRepos(data);
-      console.log(data);
-    } catch (error) {
-      console.error("Error fetching data:", error.message);
+  const getUserRepos = async (username) =>  {
+    try{
+      const repos = await getUserReposApi(username);
+      setRepos(repos);
+    }catch (error){
+      console.error("Error fetching data: ", error.message);
     }
-  };
+  }
 
   useEffect(() => {
     getUser(id); // call async getUser function
