@@ -1,25 +1,24 @@
 import axios from "axios";
 import React, { useState } from "react";
 import Users from "./Users";
-
+import {getUsers } from "../../data/api";
 const Search = () => {
   const [text, setText] = useState(""); // dùng để lưu và hiển thị dữ liệu user input
   const [users, setUsers] = useState([]); // mảng để hiển thị và lưu trữ dữ liệu user trả về từ API
-  // SearchUsers function
-  const searchUsers = async (text) => {
-    try {
-      const response = await axios.get(
-        `https://api.github.com/search/users?q=${text}`
-      );
-      setUsers(response.data.items);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
 
   const clearUsers = () => {
     setUsers([]);
   };
+
+  // search user function
+  const searchUsers = async (text) => {
+    try {
+        const users = await getUsers(text);
+        setUsers(users);
+    } catch (error) {
+        console.error("Get users fail", error);
+    }
+};
   // onSubmit function
   const onSubmit = (e) => {
     e.preventDefault();
