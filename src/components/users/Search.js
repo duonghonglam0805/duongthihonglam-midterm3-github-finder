@@ -1,11 +1,9 @@
-import axios from "axios";
-import React, { useState } from "react";
+import React, {useContext } from "react";
 import Users from "./Users";
 import {getUsers } from "../../data/api";
+import SearchContext from "../../SearchContext";
 const Search = () => {
-  const [text, setText] = useState(""); // dùng để lưu và hiển thị dữ liệu user input
-  const [users, setUsers] = useState([]); // mảng để hiển thị và lưu trữ dữ liệu user trả về từ API
-
+  const { text, setText, users, setUsers } = useContext(SearchContext);
   const clearUsers = () => {
     setUsers([]);
   };

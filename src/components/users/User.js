@@ -1,13 +1,12 @@
 import axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useParams , useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Repos from "../repos/Repos";
 import { getUserApi, getUserReposApi } from "../../data/api";
 const User = () => {
   const { id } = useParams();
   const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
-
   const getUser = async (username) => {
     try{
       const user = await getUserApi(username);
@@ -52,12 +51,12 @@ const User = () => {
       <Link to="/" className="btn btn-light">
         Back to Search
       </Link>
-      Hireable:{" "}
+      Hireable: 
       {hireable ? (
-        <i className="fas fa-check text-success" />
-      ) : (
-        <i className="fas fa-times-circle text-danger" />
-      )}
+                <i className="fas fa-check text-success" />
+            ) : (
+                <i className="fas fa-times-circle text-danger" />
+            )}
       <div className="card grid-2">
         <div className="all-center">
             <img 
