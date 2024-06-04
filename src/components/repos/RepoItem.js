@@ -1,7 +1,7 @@
 import React from 'react'
 
 const RepoItem = (props) => {
-    const {name, created_at, is_private, updated_at} = props.repo;
+    const {name, created_at, is_private} = props.repo;
   return (
     <div className='grid-item'>
         <div style={styleRepo }>
