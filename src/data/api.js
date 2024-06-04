@@ -5,7 +5,6 @@ import axios from 'axios'
     // Use the 'axios' library to make a GET request to the GitHub API endpoint
     const response = await axios.get("https://api.github.com/users");
     return (response.data); 
-    console.log("GitHub Users:", response.data);
   } catch (error) {
     // Log an error message if there's an issue fetching data
     console.error("Error fetching data:", error);
