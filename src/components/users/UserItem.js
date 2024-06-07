@@ -10,7 +10,6 @@ const UserItem = (props) => {
         className="round-img"
         style={{ width: "60px" }}
       />
-      README.md 2024-05-17 6 / 22
       <h3>{login}</h3>
       <div>
         <Link to={`/user/${login}`} className="btn btn-dark btn-sm my-1">
